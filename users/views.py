@@ -23,8 +23,8 @@ from .forms import (
 	AuthForm,
 	)
 
-result = "Error"
-message = "There was an error, please try again"
+#result = "Error"
+#message = "There was an error, please try again"
 
 
 class AccountView(TemplateView):

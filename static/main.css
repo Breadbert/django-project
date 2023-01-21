@@ -14,11 +14,14 @@ body, html, .map-container {
   height: 75%;
   }
 
+#map * {
+    overflow:visible;
+}
+
 .logo {
   width: 150px;
   padding: 8px;
 }
-
 
 ul.sidenav {
   list-style-type: none;
