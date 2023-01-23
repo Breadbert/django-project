@@ -6,7 +6,7 @@ $.getScript( "https://maps.googleapis.com/maps/api/js?key=" + google_api_key + "
 
 let autocomplete;
 
-function initAutoComplete(){
+function initAutoComplete(){ // type prediction
    autocomplete = new google.maps.places.Autocomplete(
        document.getElementById('id-google-address'),
        {
@@ -18,14 +18,14 @@ function initAutoComplete(){
 }
 
 
-function onPlaceChanged (){
+function onPlaceChanged (){ 
 
     var place = autocomplete.getPlace();
 
     var geocoder = new google.maps.Geocoder()
     var address = document.getElementById('id-google-address').value
 
-    geocoder.geocode( { 'address': address}, function(results, status) {
+    geocoder.geocode( { 'address': address}, function(results, status) { // Populates two inputs for lat and long
 
         if (status == google.maps.GeocoderStatus.OK) {
             var latitude = results[0].geometry.location.lat();
@@ -39,7 +39,7 @@ function onPlaceChanged (){
     if (!place.geometry){
         document.getElementById('id-google-address').placeholder = "*Begin typing address";
     }
-    else{
+    else{ // Loops google response to get all address info, adds the elements together to the vars
         
         for (var i = 0; i < place.address_components.length; i++) {
             for (var j = 0; j < place.address_components[i].types.length; j++) {
@@ -65,7 +65,7 @@ function onPlaceChanged (){
                 }
             }
         }
-        $('#id_address').val(num + " " + addy)
+        $('#id_address').val(num + " " + addy) // ADDRESS 🚩
 
         //find all hidden inputs & ignore csrf token
         var x = $( "input:hidden" );
@@ -78,5 +78,5 @@ function onPlaceChanged (){
         //fade in the completed form
         $('.hidden-el').fadeIn()
         $('#profile-btn').removeAttr("disabled")
-    }
+    }   // submit form is possible 
 }

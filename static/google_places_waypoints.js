@@ -7,7 +7,7 @@ $.getScript( "https://maps.googleapis.com/maps/api/js?key=" + google_api_key + "
 
 var auto_fields = ['a', 'b', 'c', 'd']
 
-function initAutocomplete() {
+function initAutocomplete() { // Loops the google response for 4 waypoints, same struct as google_places API but adapted for 4 waypoints.
 
   for (i = 0; i < auto_fields.length; i++) {
     var field = auto_fields[i]
@@ -71,7 +71,7 @@ function validateForm() {
 }
 
 
-function CalcRoute(){
+function CalcRoute(){ // 🚩picks up from views.py
 
     if ( validateForm() == true){
       var params = {
@@ -85,13 +85,13 @@ function CalcRoute(){
           long_d: $('#id-long-d').val(),
       };
 
-      var esc = encodeURIComponent;
+      var esc = encodeURIComponent; // When we select 4 endpoints, we append the url params
       var query = Object.keys(params)
           .map(k => esc(k) + '=' + esc(params[k]))
           .join('&');
 
-      url = '/map?' + query
-      window.location.assign(url)
+      url = '/map?' + query // here the query is appended, for example: '?lat_a=57.4&long_a=45.5343|x'
+      window.location.assign(url) // will be appended to new url and user is then assigned to new url with param string.
     }
 
 }

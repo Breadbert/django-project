@@ -1,4 +1,4 @@
-function DirectionsToggle(){
+function DirectionsToggle(){  // Removes hidden element or shows it 👍
   var el = $('#dir-toggle');
   var dir_table = $('#dir-table')
   if (dir_table.attr("hidden") == "hidden") {
@@ -13,9 +13,9 @@ function DirectionsToggle(){
 }
 
 
-function ShowAlert(title, message, type, redirect){
+function ShowAlert(title, message, type, redirect){ // THE TOASTER 🍞 make show alert every time there's an ajax call
     
-    if (redirect){
+    if (redirect){ // if redirect call this toaster, pick up title like success and creates unique toastr 🍞
       toastr[type](message, title, {
           positionClass: 'toast-bottom-right',
           closeButton: true,
@@ -43,7 +43,7 @@ function ShowAlert(title, message, type, redirect){
    
 };
 
-function showPword() {
+function showPword() { // Shows pword in sign_up
   var x = document.getElementsByClassName("password");
   for (let i = 0; i < x.length; i++){
       if (x[i].type === "password") {
@@ -54,15 +54,15 @@ function showPword() {
   }
 }
 
-var temp_button_text;
+var temp_button_text; // The text thats in submit button 🔵
 
-function CustomFormSubmitPost(e){
+function CustomFormSubmitPost(e){ // If form is submitted, shows spinner and disables button
     var el = $(e);
     temp_button_text = el.text()
     el.attr('disabled', 'disabled').text("").append('<class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>Loading...');
 };
 
-function CustomFormSubmitResponse(e){
+function CustomFormSubmitResponse(e){ // If all is well, removes attribute "disabled" and adds proper text
     var el = $(e);
     el.removeAttr('disabled').text(temp_button_text);
 };
@@ -70,34 +70,34 @@ function CustomFormSubmitResponse(e){
 
 
 "use strict";
-var FormControls = function () {
+var FormControls = function () { 
 
     var usersignup = function () {
 
         var form = $('#signupform')
-        form.submit(function(event){
+        form.submit(function(event){ // prevent default function
             event.preventDefault();
             CustomFormSubmitPost($('#signupform button[type=submit]'));
 
-            grecaptcha.ready(function() {
-              grecaptcha.execute(recaptcha_site_key, {action: "/"}).then(function(token) {
+            grecaptcha.ready(function() { // Loaded in sign_up - can access google recaptcha
+              grecaptcha.execute(recaptcha_site_key, {action: "/"}).then(function(token) { 
 
-                document.getElementById('id_token').value = token;
+                document.getElementById('id_token').value = token; // TOKEN HERE 🚩
             
-                var formdata = form.serialize() 
+                var formdata = form.serialize() // Doesn't work without this idk
                 $.ajax({
-                    url: form.attr("action"),
+                    url: form.attr("action"), // Attribute is sign up
                     method: form.attr("method"),
                     data: formdata,
-                    success: function(json){
+                    success: function(json){ 
                         CustomFormSubmitResponse($('#signupform button[type=submit]'));
                         if (json["result"] == "Success"){
-                          var redirect = "/"
+                          var redirect = "/" // Redirect to home page
                         }
                         else{
-                          var redirect = false
+                          var redirect = false 
                         }
-                        ShowAlert(json["result"], json["message"], json["result"].toLowerCase(), redirect);
+                        ShowAlert(json["result"], json["message"], json["result"].toLowerCase(), redirect); // Pass result
                     },
                     error: function(xhr){
                         CustomFormSubmitResponse($('#signupform button[type=submit]'));
@@ -111,7 +111,7 @@ var FormControls = function () {
         })    
     };
 
-    var usersignin = function (){
+    var usersignin = function (){ 
         var form = $('#signinform')
         form.submit(function(event){
             event.preventDefault();
@@ -141,12 +141,12 @@ var FormControls = function () {
         });
     };
 
-    var userprofile = function () {
+    var userprofile = function () { // Form in profile.html
 
         var form = $('#profileform')
-        form.submit(function(event){
+        form.submit(function(event){ // Prevent default function
             event.preventDefault();
-            CustomFormSubmitPost($('#profileform button[type=submit]'));
+            CustomFormSubmitPost($('#profileform button[type=submit]')); 
             
             var formdata = form.serialize()
             $.ajax({
@@ -182,7 +182,7 @@ var FormControls = function () {
     };
 }();
 
-jQuery(document).ready(function() {     
+jQuery(document).ready(function() {     // Doc ready, when html is ready then format controls and initiate them
     FormControls.init();
 });
 

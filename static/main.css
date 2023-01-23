@@ -14,15 +14,6 @@ body, html, .map-container {
   height: 75%;
   }
 
-#map * {
-    overflow:visible;
-}
-
-.logo {
-  width: 150px;
-  padding: 8px;
-}
-
 ul.sidenav {
   list-style-type: none;
   margin: 0;
@@ -42,8 +33,7 @@ ul.sidenav li a {
 }
 
 ul.sidenav li a.active {
-  background-color: #9c07b6;
-  color: white;
+  background-color: #12cf51; 
 }
 
 ul.sidenav li a:hover:not(.active) {
@@ -93,28 +83,27 @@ input[type=text], input[type=email], input[type=password], select, textarea {
 
 
 ::-webkit-input-placeholder { /* Edge */
-  color: #9c07b6;
+  color: #12cf51;
   font-family: 'Courier Prime', monospace;
 }
 
 :-ms-input-placeholder { /* Internet Explorer */
-  color: #9c07b6;
+  color: #00ff55;
   font-family: 'Courier Prime', monospace;
 }
 
 ::placeholder {
-  color: #9c07b6;
+  color: #00ff55;
   font-family: 'Courier Prime', monospace;
 }
 
-select.selection option,
-{
-  color: #9c07b6;
+select.selection option{
+  color: #12cf51;
   font-family: 'Courier Prime', monospace;
 }
 
 input, select{
-  color: #9c07b6;
+  color: #00ff55;
   font-family: 'Courier Prime', monospace;
 
 }
@@ -158,7 +147,7 @@ input, select{
 
 /* When the checkbox is checked, add a green background */
 .check-container input:checked ~ .checkmark {
-  background-color: #9c07b6;
+  background-color: #00ff55;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -226,11 +215,11 @@ input, select{
 }
 
 input:checked + .slider {
-  background-color: #9c07b6;
+  background-color: #00ff55;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #9c07b6;
+  box-shadow: 0 0 1px #00ff55;
 }
 
 input:checked + .slider:before {
@@ -249,7 +238,7 @@ input:checked + .slider:before {
 }
 
 button[type=submit] {
-  background-color: #9c07b6;
+  background-color: #00ff55;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -258,7 +247,7 @@ button[type=submit] {
 }
 
 button[type=submit]:hover {
-  background-color: #730786;
+  background-color: #0f743e;
 }
 
 .container {
@@ -284,12 +273,12 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #9c07b6;
+  background-color: #00ff55;
   color: white;
 }
 
 .selected {
-  background-color: #730786;
+  background-color: #00ff55;
   color: #FFF;
 }
 

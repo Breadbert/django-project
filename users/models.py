@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
 	'''
-	Our UserProfile model extends the built-in Django User Model
+	UserProfile model extends the built-in Django User Model
 	'''
 	timestamp = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
